@@ -1,0 +1,36 @@
+input, textarea { width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; box-sizing: border-box; }
+textarea { resize: none !important; }
+button { background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%; }
+button:hover { opacity: 0.8; }
+h2, .container { padding: 16px; }
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	width: 80%;
+}
+
+select { padding: 10px 15px; }
+
+.mc {
+	min-width: max-content;
+}
+
+.fl {
+	display: flex;
+}
+.fl *:not(:last-child) { 
+	margin-right: 20px
+}
+
+.ic {
+	align-items: center;
+}
+
+.g {
+	outline: 1px #80808030 solid;
+	padding: 10px;
+	margin-bottom: 0.75rem;
+}

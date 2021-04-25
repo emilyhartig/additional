@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="md5.js" type="text/javascript"></script>
+		<script src="jwt-decode.js" type="text/javascript"></script>
+		<script src="index.js" type="text/javascript"></script>
+		<script src="workerFunctions.js" type="text/javascript"></script>
+
+		<link rel="stylesheet" href="index.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+	</head>
+
+	<body>
+		<h2>Simple PoC</h2>
+		<div class="container">
+			<textarea id="_1" rows="14"></textarea>
+			<div style="display: flex;">
+				<button onclick="processOriginalFetch()">Process fetch</button>
+			</div>
+
+			<div style="padding-bottom: 10px">
+				<label for="token"><b>Token</b></label>
+				<input id="_2" type="text" placeholder="Paste your token" name="token" required>
+				<input id="_t1" type="text" disabled>
+				<input id="_t2" type="text" style="visibility: hidden; margin: unset; padding: unset;">
+			</div>
+
+			<textarea id="_t" rows="5" disabled></textarea>
+
+			<label for="link"><b>Headers</b></label>
+			<input id="_3" type="text" name="link" required disabled>
+
+			<label for="payload"><b>Payload</b></label>
+			<input id="_4" type="text" name="payload" required disabled>
+		</div>
+
+		<div class="container">
+			<label for="link"><b>Link</b></label>
+			<input id="a" type="text" name="link" required onchange="RecalculateHash()">
+
+			<label for="neededScore"><b>Needed score</b></label>
+			<input id="b" placeholder="Put score that you need" name="neededScore" required type="number" value="0" step="1" onchange="RecalculateHash()">
+
+			<label for="gameId"><b>Game id</b></label>
+			<input id="f" name="gameId" required type="number">
+
+			<div class="g">
+				<div class="fl ic">
+					<label for="playTime" class="mc"><b>Play time</b></label>
+					<input id="_p" name="playTime" required type="number" onchange="displayPlayTime(this.value | 0);RecalculateHash()" min="1" step="1">
+				</div>
+
+				<div class="fl ic">
+					<label for="playTimeType"><b>Play time type</b></label>
+					<select id="_p2" name="playTimeType">
+						<option value="1">Pre-Calculated</option>
+						<option value="2" selected>Exact</option>
+					</select>
+				</div>
+				
+				<div class="fl ic">
+					<label for="minDelay" class="mc"><b>Min delay</b></label>
+					<input id="c" placeholder="Put min delay" name="minDelay" required type="number" value="2.5" step="0.1" min="1.5" max="2.5" oninput="this.reportValidity()">
+				</div>
+
+				<div class="fl ic">
+					<label for="maxDelay" class="mc"><b>Max delay</b></label>
+					<input id="d" placeholder="Put max delay" name="maxDelay" required type="number" value="5.0" step="0.1" min="2.5" max="10.0" oninput="this.reportValidity()">
+				</div>
+
+				<span id="_p3"></span>
+			</div>
+
+			<label for="releaseNumber"><b>Release number</b></label>
+			<input id="g" name="releaseNumber" required type="number">
+
+			<div class="g">
+				<div class="fl ic">
+					<label for="isSaveState"><b>Is save state</b></label>
+					<select id="_g" name="isSaveState">
+						<option value="1">Enabled</option>
+						<option value="2" selected>Disabled</option>
+					</select>
+				</div>
+			</div>
+
+			<label for="gameplayId"><b>Session games count</b></label>
+			<input id="h" name="gameplayId" required type="number">
+
+			<label for="checksum"><b>Checksum</b></label>
+			<input id="i" name="checksum" required type="text">
+
+			<div class="g">
+				<label for="gameStateData"><b>Game state data</b></label>
+				<textarea id="k" name="gameStateData" rows="10" onchange="RecalculateHash()"></textarea>
+
+				<div class="fl ic">
+					<label for="gameStateDataType"><b>Game state data type</b></label>
+					<select id="_k" name="gameStateDataType" onchange="RecalculateHash()">
+						<option value="1" selected>Null</option>
+						<option value="2">String</option>
+					</select>
+				</div>
+			</div>
+
+			<textarea id="j" rows="14" readonly></textarea>
+			<span id="_p4"></span>
+			<div style="display: flex;">
+				<button onclick="generateFetch()" style="margin-right: 10px;">Generate direct fetch</button>
+				<button onclick="copyValue__()">Copy</button>
+			</div>
+	</body>
+</html>
+
